@@ -133,10 +133,8 @@ input {
     font-size: 15px;
     font-family: monospace;
     height: 25px;
-}
-
-.page #muvelet {
-    margin-bottom: 70px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 /*.page button {
@@ -202,6 +200,36 @@ input {
     font-family: ds-digital;
     font-size: 25px;
     font-weight: 300;
+}
+
+.jell {
+    margin-left: 45%;
+    margin-bottom: 80px;
+}
+
+.muvel {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.muv {
+    width: 15px;
+    height: 15px;
+    padding: 0;
+}
+
+.muv:hover {
+    cursor: pointer;
+}
+
+.muvelet {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+}
+
+.muvelet:hover {
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1800px) {
