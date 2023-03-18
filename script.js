@@ -5,6 +5,9 @@ let tim = document.getElementById("time")
 let endTime = document.getElementById("endTime")
 let egyediSZ = document.getElementById("egyediSZ")
 
+let ell = document.getElementById("ell")
+let gray = document.getElementById("gray")
+
 
 let muvJel = []
 
@@ -12,6 +15,14 @@ let min = 0
 let sec = 0
 let time = false
 let end = false
+
+let loader = document.querySelector(".preloader");
+
+window.addEventListener("load", vanish)
+
+function vanish() {
+  setTimeout(()=>{loader.classList.add("disppear")},300)
+}
 
 function Check() {
     if (end) return;
@@ -67,6 +78,8 @@ function Check() {
         time = false
         end = true
         endTime.innerHTML = tim.innerHTML
+        ell.style.display = "none"
+        gray.style.display = "block"
     } else {
         res.innerHTML = "❌"
     }
@@ -157,10 +170,12 @@ function Start() {
             b.innerHTML = sz2
         }
     }
+    loader.classList.remove("disppear")
     time = true
     end = false
     pb.style.display = "none"
-    setTimeout(() => {Time()},500)
+    setTimeout(() => {loader.classList.add("disppear")},450)
+    setTimeout(() => {Time()},2500)
 }
 
 let oldMin = 0

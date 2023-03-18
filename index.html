@@ -9,8 +9,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="preloader">
+        <img src="./loader.gif">
+    </div>
     <div class="def_page">
-        <div class="timer" id="time">00:00</div>
+        <div class="timer" id="time">
+            00:00
+        </div>
         <table>
             <tr>
                 <td id="a1">10</td><td id="jel1">+</td><td id="b1">10</td><td>=</td><td><input id="inp1" min="0" max="100000" type="number"></td><td class="res" id="res1"></td>
@@ -43,7 +48,8 @@
                 <td class="top" id="a10">14</td><td class="top" id="jel10">+</td><td class="top" id="b10">10</td><td class="top">=</td><td class="top"><input id="inp10" min="0" max="100000" type="number"></td><td class="top res" id="res10"></td>
             </tr>
         </table>
-        <button class="btn" onclick="Check()">Ellenőrzés</button><div class="result">Megoldás: <span id="res"></span><br>Idő: <span id="endTime">00:00</span></div>
+        <div class="btns"><button class="btn" id="ell" onclick="Check()">Ellenőrzés</button><button class="btn gray" id="gray" onclick="location.reload()">Új játék</button></div>
+        <div class="result">Megoldás: <span id="res"></span><br>Idő: <span id="endTime">00:00</span></div>
     </div>
     <div class="pageback" id="pb">
         <div class="page">
