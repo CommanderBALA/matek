@@ -62,13 +62,11 @@ function Check() {
             }
         }
 
-    }
-
-    for (let i = 1; i < 11; i++) {
-        let res = document.getElementById(`res${i}`)
         if (res.innerHTML == "✅") {
             goods.push(i)
+            inp.readOnly = true
         }
+
     }
 
     let res = document.getElementById("res")
