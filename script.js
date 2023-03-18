@@ -4,6 +4,7 @@ let err = document.getElementById("err")
 let pb = document.getElementById("pb")
 let tim = document.getElementById("time")
 let endTime = document.getElementById("endTime")
+let egyediSZ = document.getElementById("egyediSZ")
 
 let ö_k = ["+", "-"]
 let sz_o = ["*", "/"]
@@ -84,24 +85,31 @@ function Start() {
     if (szam.value == "def" && muvelet == "def") {
         err.innerHTML = "Nincs megadva a művelet és a számkészlet"
         err.style.display = "block"
-        err.style.opacity = 1
 
         return;
     } else if (szam.value == "def") {
         err.innerHTML = "Nincs megadva a számkészlet"
         err.style.display = "block"
-        err.style.opacity = 1
+
+        return;
+    } else if (szam.value == "e" && egyediSZ.value == "") {
+        err.innerHTML = "Nincs megadva maximum szám"
+        err.style.display = "block"
 
         return;
     } else if (muvelet == "def") {
         err.innerHTML = "Nincs megadva a művelet"
         err.style.display = "block"
-        err.style.opacity = 1
 
         return;
     }
 
     max = szam.value
+    if (max == "e") {
+        max = egyediSZ.value
+        console.log(max)
+    }
+
     let muve = ""
     for (let i = 1; i < 11; i++) {
         let sz1 = Math.floor(Math.random() * max);
@@ -125,12 +133,19 @@ function Start() {
             a.innerHTML = sz1
             b.innerHTML = sz2
         } else if (muve == "/") {
+            let maxx = max - 2
             let remainder = sz1 % sz2
             while (remainder != 0) {
-                sz1 = Math.floor(Math.random() * max);
-                sz2 = Math.floor(Math.random() * max);
+                sz1 = Math.floor(Math.random() * maxx) +2;
+                sz2 = Math.floor(Math.random() * maxx) +2;
                 remainder = sz1 % sz2
             }
+            a.innerHTML = sz1
+            b.innerHTML = sz2
+        } else if (muve == "*") {
+            let maxx = max - 2
+            sz1 = Math.floor(Math.random() * maxx) +2;
+            sz2 = Math.floor(Math.random() * maxx) +2;
             a.innerHTML = sz1
             b.innerHTML = sz2
         } else {
@@ -141,7 +156,7 @@ function Start() {
     time = true
     end = false
     pb.style.display = "none"
-    Time()
+    setTimeout(() => {Time()},500)
 }
 
 let oldMin = 0
@@ -173,4 +188,12 @@ function Time() {
     tim.innerHTML = timeNum
 
     setTimeout(() => {Time()}, 1000)
+}
+
+szam.oninput = function() {
+    if (this.value == "e") {
+        egyediSZ.style.display = "block"
+    } else {
+        egyediSZ.style.display = "none"
+    }
 }
