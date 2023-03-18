@@ -59,19 +59,15 @@
                 <option value="10001">0-10000</option>
                 <option value="e">Egyéni maximum</option>
             </select>
-            <input type="number" value="10" min="10" max="1000000" id="egyediSZ" placeholder="Maximum érték">
+            <input type="number" value="10" min="3" max="1000000" id="egyediSZ" placeholder="Maximum érték">
             <hr>
-            <h2>Válaszd ki a műveleteket</h2>
-            <select id="muvelet">
-                <option value="def">Válasz egy műveletet</option>
-                <option value="+">+ (összeadás)</option>
-                <option value="-">- (kivonás)</option>
-                <option value="*">* (szorzás)</option>
-                <option value="/">/ (osztás)</option>
-                <option value="ö+k">+ & - (összeadás és kivonás)</option>
-                <option value="sz+o">* & / (szorzás és osztás)</option>
-                <option value="m">+ & - & * & / (minden)</option>
-            </select>
+            <h2>Válaszd ki a műveleteket <i>(Többet is lehet, 1-4-ig)</i></h2>
+            <div class="jell">
+                <div class="muvel"><input type="checkbox" value="+" id="m1" class="muv"><span class="muvelet" onclick="Mark(1)">Összeadás</span></div>
+                <div class="muvel"><input type="checkbox" value="-" id="m2" class="muv"><span class="muvelet" onclick="Mark(2)">Kivonás</span></div>
+                <div class="muvel"><input type="checkbox" value="*" id="m3" class="muv"><span class="muvelet" onclick="Mark(3)">Szorzás</span></div>
+                <div class="muvel"><input type="checkbox" value="/" id="m4" class="muv"><span class="muvelet" onclick="Mark(4)">Osztás</span></div>
+            </div>
             <button class="btn" onclick="Start()">MEHET!</button>
             <div id="err">Err</div>
         </div>

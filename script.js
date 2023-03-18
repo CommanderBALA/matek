@@ -1,14 +1,12 @@
 let szam = document.getElementById("szam")
-let muv = document.getElementById("muvelet")
 let err = document.getElementById("err")
 let pb = document.getElementById("pb")
 let tim = document.getElementById("time")
 let endTime = document.getElementById("endTime")
 let egyediSZ = document.getElementById("egyediSZ")
 
-let ö_k = ["+", "-"]
-let sz_o = ["*", "/"]
-let minden = ["+", "-", "*", "/"]
+
+let muvJel = []
 
 let min = 0
 let sec = 0
@@ -18,17 +16,14 @@ let end = false
 function Check() {
     if (end) return;
     let goods = []
+
     for (let i = 1; i < 11; i++) {
         let a = document.getElementById(`a${i}`)
         let b = document.getElementById(`b${i}`)
         let inp = document.getElementById(`inp${i}`)
         let res = document.getElementById(`res${i}`)
         let jel = document.getElementById(`jel${i}`) 
-        let muvelet = muv.value
-
-        if (muvelet == "ö+k" || muvelet == "sz+o" || muvelet == "m") {
-            muvelet = jel.innerHTML
-        }
+        let muvelet = jel.innerHTML
 
         if (muvelet == "-") {
             if (parseInt(inp.value) == parseInt(a.innerHTML) - parseInt(b.innerHTML)) {
@@ -80,9 +75,12 @@ function Check() {
 }
 
 function Start() {
-    let max = 0
-    let muvelet = muv.value
-    if (szam.value == "def" && muvelet == "def") {
+    for (let i = 1; i < 5; i++) {
+        let now = document.getElementById(`m${i}`)
+        if (now.checked) muvJel.push(now.value)
+    }
+
+    if (szam.value == "def" && muvJel.length == 0) {
         err.innerHTML = "Nincs megadva a művelet és a számkészlet"
         err.style.display = "block"
 
@@ -97,17 +95,21 @@ function Start() {
         err.style.display = "block"
 
         return;
-    } else if (muvelet == "def") {
+    } else if (muvJel.length == 0) {
         err.innerHTML = "Nincs megadva a művelet"
         err.style.display = "block"
 
         return;
     }
 
-    max = szam.value
-    if (max == "e") {
-        max = egyediSZ.value
-        console.log(max)
+    let max = szam.value
+    if (max == "e") max = egyediSZ.value
+
+    if (max < 3) {
+        err.innerHTML = "Nem lehet 3-nál kisebb a minimum"
+        err.style.display = "block"
+
+        return;
     }
 
     let muve = ""
@@ -118,10 +120,7 @@ function Start() {
         let b = document.getElementById(`b${i}`)
         let jel = document.getElementById(`jel${i}`) 
 
-        if (muvelet == "ö+k") muve = ö_k[Math.floor((Math.random()*ö_k.length))]
-        else if (muvelet == "sz+o") muve = sz_o[Math.floor((Math.random()*sz_o.length))]
-        else if (muvelet == "m") muve = minden[Math.floor((Math.random()*minden.length))]
-        else muve = muvelet
+        muve = muvJel[Math.floor((Math.random()*muvJel.length))]
 
         jel.innerHTML = muve
 
@@ -134,11 +133,16 @@ function Start() {
             b.innerHTML = sz2
         } else if (muve == "/") {
             let maxx = max - 2
+            sz1 = Math.floor(Math.random() * maxx) +2;
+            sz2 = Math.floor(Math.random() * maxx) +2;
             let remainder = sz1 % sz2
-            while (remainder != 0) {
+            while (remainder != 0 && sz1 == 0) {
+                console.log(maxx)
                 sz1 = Math.floor(Math.random() * maxx) +2;
                 sz2 = Math.floor(Math.random() * maxx) +2;
                 remainder = sz1 % sz2
+
+                console.log( sz1 +" "+ sz2)
             }
             a.innerHTML = sz1
             b.innerHTML = sz2
@@ -195,5 +199,15 @@ szam.oninput = function() {
         egyediSZ.style.display = "block"
     } else {
         egyediSZ.style.display = "none"
+    }   
+}
+
+function Mark(num) {
+    let mark = document.getElementById(`m${num}`)
+
+    if (mark.checked) {
+        mark.checked = false
+    } else {
+        mark.checked = true
     }
 }
