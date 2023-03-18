@@ -147,23 +147,6 @@ input {
     margin-bottom: 10px;
 }
 
-/*.page button {
-    display: block;
-    margin: auto;
-    font-size: 30px;
-    font-family: monospace;
-    padding: 6px 10px;
-    border: none;
-    background: rgb(195, 236, 195);
-    border-radius: 10px;
-    transition: all .4s;
-}
-
-.page button:hover {
-    cursor: pointer;
-    padding: 6px 35px;
-}*/
-
 .page #err {
     padding: 6px;
     background: red;
@@ -214,7 +197,7 @@ input {
 
 .jell {
     margin-left: 45%;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 .muvel {
@@ -261,6 +244,24 @@ input {
         width: 120px;
     }
 
+    .page {
+        width: 70%;
+        padding: 8px;
+        margin-top: 20px;
+    }
+
+    .jell {
+        margin-bottom: 30px;
+    }
+
+    .muvel {
+        margin-top: 8px;
+    }
+
+    .err {
+        font-size: 15px;
+    }
+
 }
 
 @media screen and (max-width: 1200px) {
@@ -291,6 +292,38 @@ input {
         width: 70px;
         left: 12px;
         top: 15px;
+    }
+
+    .page {
+        width: 95%;
+        padding: 5px;
+        margin-top: 10px;
+    }
+
+    .page h2 {
+        font-size: 16px;
+    }
+
+    .page select,
+    .page #egyediSZ {
+        width: 150px;
+        margin-bottom: 0;
+    }
+
+    .page span {
+        font-size: 14px;
+    }
+
+    .jell {
+        margin-bottom: 10px;
+    }
+
+    .muvel {
+        margin-top: 5px;
+    }
+
+    .err {
+        font-size: 14px;
     }
 
 }
