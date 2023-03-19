@@ -114,7 +114,7 @@ function Start() {
     }
 
     let max = szam.value
-    if (max == "e") max = egyediSZ.value
+    if (max == "e") max = parseInt(egyediSZ.value)+1
 
     if (max < 3) {
         err.innerHTML = "Nem lehet 3-nál kisebb a minimum"
