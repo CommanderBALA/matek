@@ -147,13 +147,10 @@ function Start() {
             sz1 = Math.floor(Math.random() * maxx) +2;
             sz2 = Math.floor(Math.random() * maxx) +2;
             let remainder = sz1 % sz2
-            while (remainder != 0 && sz1 == 0) {
-                console.log(maxx)
+            while (remainder != 0) {
                 sz1 = Math.floor(Math.random() * maxx) +2;
                 sz2 = Math.floor(Math.random() * maxx) +2;
                 remainder = sz1 % sz2
-
-                console.log( sz1 +" "+ sz2)
             }
             a.innerHTML = sz1
             b.innerHTML = sz2
